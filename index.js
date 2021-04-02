@@ -42,7 +42,7 @@ function auth(){
   },2000);
 
 
-  firebase.auth().signInWithPhoneNumber("+918459888289", appVerifier)
+  firebase.auth().signInWithPhoneNumber("+918459888289", window.recaptchaVerifier)
     .then((confirmationResult) => {
        console.log("otp send");
        console.log(confirmationResult);
