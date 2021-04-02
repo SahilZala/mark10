@@ -26,19 +26,19 @@ auth();
 
 function auth(){
     
-    console.log(firebase.auth().useDeviceLanguage());
+   
   setTimeout(function() {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
         'size': 'normal',
         'callback': function(response) {
-            console.log("success", response);
+          
             console.log(window.recaptchaVerifier)
 
              firebase.auth().signInWithPhoneNumber("+918459888289", window.recaptchaVerifier)
             .then((confirmationResult) => {
 
                 console.log("otp send");
-                console.log(confirmationResult);
+               
               // SMS sent. Prompt user to type the code from the message, then sign the
               // user in with confirmationResult.confirm(code).
               window.confirmationResult = confirmationResult;
