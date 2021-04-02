@@ -25,19 +25,22 @@ function pushData(){
 auth();
 
 function auth(){
-     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-      'size': 'normal',
-      'callback': (response) => {
-        // reCAPTCHA solved, allow signInWithPhoneNumber.
-        // ...
+     setTimeout(function() {
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+        'size': 'normal',
+        'callback': function(response) {
+            console.log("success", response);
+            sendOtp();
+        },
+        'expired-callback': function() {
+            console.log("expired-callback");
+        }
+    });
 
-        sendOtp();
-      },
-      'expired-callback': () => {
-        // Response expired. Ask user to solve reCAPTCHA again.
-        // ...
-      }
-    });    
+    recaptchaVerifier.render().then(function(widgetId) {
+        window.recaptchaWidgetId = widgetId;
+    });
+  },2000);   
 }
 
 function sendOtp()
