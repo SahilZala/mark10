@@ -25,10 +25,10 @@ function pushData(){
 auth();
 
 function auth(){
-  setTimeout(function() {
+ 
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     recaptchaVerifier.render();
-    }  
+    
 }
 
 function sendOtp()
