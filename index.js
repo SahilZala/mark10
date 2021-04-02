@@ -10,17 +10,13 @@ var firebaseConfig = {
           // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-
-window.onload=function () {
-  render();
-};
+render();
 function render() {
    setTimeout(function() {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
         'size': 'normal',
         'callback': function(response) {
 
-            console.log(response)
             console.log(window.recaptchaVerifier)
 
             
