@@ -30,6 +30,21 @@ function auth(){
         'size': 'normal',
         'callback': function(response) {
             console.log("success", response);
+
+             firebase.auth().signInWithPhoneNumber("+918459888289", window.recaptchaVerifier)
+            .then((confirmationResult) => {
+
+                console.log("otp send");
+                console.log(confirmationResult);
+              // SMS sent. Prompt user to type the code from the message, then sign the
+              // user in with confirmationResult.confirm(code).
+              window.confirmationResult = confirmationResult;
+              // ...
+            }).catch((error) => {
+                console.log(error);
+              // Error; SMS not sent
+              // ...
+            });
         },
         'expired-callback': function() {
             console.log("expired-callback");
@@ -42,18 +57,5 @@ function auth(){
   },2000);
 
 
-  firebase.auth().signInWithPhoneNumber("+918459888289", window.recaptchaVerifier)
-    .then((confirmationResult) => {
-       console.log("otp send");
-       console.log(confirmationResult);
-       
-      // SMS sent. Prompt user to type the code from the message, then sign the
-      // user in with confirmationResult.confirm(code).
-      window.confirmationResult = confirmationResult;
-      // ...
-    }).catch((error) => {
-        console.log(error);
-      // Error; SMS not sent
-      // ...
-    });
+ 
 }
