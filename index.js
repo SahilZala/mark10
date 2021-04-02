@@ -32,6 +32,7 @@ function auth(){
         'size': 'normal',
         'callback': function(response) {
             console.log("success", response);
+            console.log(window.recaptchaVerifier)
 
              firebase.auth().signInWithPhoneNumber("+918459888289", response)
             .then((confirmationResult) => {
