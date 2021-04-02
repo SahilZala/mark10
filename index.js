@@ -11,7 +11,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-auth();
+
 function auth(){
       
     setTimeout(function() {
@@ -33,11 +33,12 @@ function auth(){
 }
 
 function phoneAuth() {
+    var appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container')
     //get the number
     var number=document.getElementById('number').value;
     //phone number authentication function of firebase
     //it takes two parameter first one is number,,,second one is recaptcha
-    firebase.auth().signInWithPhoneNumber(number,window.recaptchaVerifier).then(function (confirmationResult) {
+    firebase.auth().signInWithPhoneNumber(number,appVerifier).then(function (confirmationResult) {
         //s is in lowercase
         window.confirmationResult=confirmationResult;
         coderesult=confirmationResult;
