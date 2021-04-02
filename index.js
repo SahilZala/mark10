@@ -10,23 +10,28 @@ var firebaseConfig = {
           // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-init();
-function init() {
-   setTimeout(function() {
+
+auth();
+function auth(){
+      
+    setTimeout(function() {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
         'size': 'normal',
         'callback': function(response) {
-
-            console.log(window.recaptchaVerifier)
-
-            
+            console.log("success", response);
+            sendOtp();
         },
         'expired-callback': function() {
             console.log("expired-callback");
         }
     });
-    })
+
+    recaptchaVerifier.render().then(function(widgetId) {
+        window.recaptchaWidgetId = widgetId;
+    });
+  },2000);   
 }
+
 function phoneAuth() {
     //get the number
     var number=document.getElementById('number').value;
