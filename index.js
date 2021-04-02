@@ -20,6 +20,7 @@ function render() {
         'size': 'normal',
         'callback': function(response) {
 
+            console.log(response)
             console.log(window.recaptchaVerifier)
 
             
