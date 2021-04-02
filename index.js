@@ -25,40 +25,23 @@ function pushData(){
 auth();
 
 function auth(){
-    
-   
   setTimeout(function() {
-    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-        'size': 'normal',
-        'callback': function(response) {
-          
-            console.log(window.recaptchaVerifier)
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    recaptchaVerifier.render();
+    }  
+}
 
-             firebase.auth().signInWithPhoneNumber("+918459888289", window.recaptchaVerifier)
-            .then((confirmationResult) => {
+function sendOtp()
+{
+    var number = "+918459888289";
 
-                console.log("otp send");
-               
-              // SMS sent. Prompt user to type the code from the message, then sign the
-              // user in with confirmationResult.confirm(code).
-              window.confirmationResult = confirmationResult;
-              // ...
-            }).catch((error) => {
-                console.log(error);
-              // Error; SMS not sent
-              // ...
-            });
-        },
-        'expired-callback': function() {
-            console.log("expired-callback");
-        }
+    firebase.auth().signInWithPhoneNumber(numbe, window.recaptchaVerifier)
+    .then((confirmationResult) => {
+      window.confirmationResult = confirmationResult;
+      console.log(confirmationResult);
+      alert("otp sended");
+      
+    }).catch((error) => {
+      
     });
-
-    recaptchaVerifier.render().then(function(widgetId) {
-        window.recaptchaWidgetId = widgetId;
-    });
-  },2000);
-
-
- 
 }
