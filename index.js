@@ -26,7 +26,7 @@ auth();
 
 function auth(){
  
-   window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+   window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
   'size': 'invisible',
   'callback': (response) => {
     // reCAPTCHA solved, allow signInWithPhoneNumber.
