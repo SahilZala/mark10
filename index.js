@@ -30,7 +30,7 @@ function auth(){
         'size': 'normal',
         'callback': function(response) {
             console.log("success", response);
-            sendOtp();
+        
         },
         'expired-callback': function() {
             console.log("expired-callback");
