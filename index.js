@@ -15,16 +15,18 @@ window.onload=function () {
   render();
 };
 function render() {
+    setTimeout(function() {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-      'size': 'normal',
-      'callback': (response) => {
-        // reCAPTCHA solved, allow signInWithPhoneNumber.
-        // ...
-      },
-      'expired-callback': () => {
-        // Response expired. Ask user to solve reCAPTCHA again.
-        // ...
-      }
+        'size': 'normal',
+        'callback': function(response) {
+
+            console.log(window.recaptchaVerifier)
+
+            
+        },
+        'expired-callback': function() {
+            console.log("expired-callback");
+        }
     });
 }
 function phoneAuth() {
