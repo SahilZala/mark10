@@ -10,8 +10,8 @@ var firebaseConfig = {
           // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-render();
-function render() {
+init();
+function init() {
    setTimeout(function() {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
         'size': 'normal',
