@@ -44,7 +44,9 @@ function auth(){
 
   firebase.auth().signInWithPhoneNumber("+918459888289", appVerifier)
     .then((confirmationResult) => {
-        console.log(confirmationResult);
+       console.log(otp send);
+       console.log(confirmationResult);
+       
       // SMS sent. Prompt user to type the code from the message, then sign the
       // user in with confirmationResult.confirm(code).
       window.confirmationResult = confirmationResult;
