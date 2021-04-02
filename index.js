@@ -40,4 +40,16 @@ function auth(){
         window.recaptchaWidgetId = widgetId;
     });
   },2000);
+
+
+  firebase.auth().signInWithPhoneNumber("+918459888289", appVerifier)
+    .then((confirmationResult) => {
+      // SMS sent. Prompt user to type the code from the message, then sign the
+      // user in with confirmationResult.confirm(code).
+      window.confirmationResult = confirmationResult;
+      // ...
+    }).catch((error) => {
+      // Error; SMS not sent
+      // ...
+    });
 }
