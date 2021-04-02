@@ -26,7 +26,7 @@ auth();
 
 function auth(){
     
-    firebase.auth().useDeviceLanguage();
+    console.log(firebase.auth().useDeviceLanguage());
   setTimeout(function() {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
         'size': 'normal',
