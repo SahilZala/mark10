@@ -15,7 +15,7 @@ window.onload=function () {
   render();
 };
 function render() {
-    setTimeout(function() {
+   setTimeout(function() {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
         'size': 'normal',
         'callback': function(response) {
@@ -28,6 +28,7 @@ function render() {
             console.log("expired-callback");
         }
     });
+    })
 }
 function phoneAuth() {
     //get the number
