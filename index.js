@@ -1,15 +1,33 @@
 var firebaseConfig = {
-    apiKey: "AIzaSyAZWiq025mp7DpWNwrj4o5kuq5rSE60fgA",
-    authDomain: "demoproject2-b6295.firebaseapp.com",
-    databaseURL: "https://demoproject2-b6295.firebaseio.com",
-    projectId: "demoproject2-b6295",
-    storageBucket: "demoproject2-b6295.appspot.com",
-    messagingSenderId: "236712378709",
-    appId: "1:236712378709:web:465f4e9af93ff82d0cafdc"
+    apiKey: "AIzaSyCX5E1R61Sl5Zi6Jo3Cl1_g-151ga-lDRc",
+    authDomain: "krashcompany-c0534.firebaseapp.com",
+    databaseURL: "https://krashcompany-c0534-default-rtdb.firebaseio.com",
+    projectId: "krashcompany-c0534",
+    storageBucket: "krashcompany-c0534.appspot.com",
+    messagingSenderId: "682402474385",
+    appId: "1:682402474385:web:f560625ab1b99206411230",
+    measurementId: "G-L35BXKQ6LF"
 };
-          // Initialize Firebase
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+
+const messaging = firebase.messaging();
+
+
+messaging.requestPermission()
+.then(function(){
+    console.log("Notification Permission");
+    return messaging.getToken();
+
+}).then(function (token){
+
+    console.log(token);
+}).catch(function (reason){
+    console.log("Reason: "+reason);
+    
+});
+
 
 
 function auth(){
